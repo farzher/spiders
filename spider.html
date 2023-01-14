@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+  <!-- seo title / descirption -->
+  <title>SPIDERS</title>
+  <meta name="description" content="SPIDERS">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Web Fonts -->
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900' type='text/css'>
+
+  <!-- Animate -->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+
+  <!-- lightgallery -->
+  <link type="text/css" rel="stylesheet" href="vendor/lightgallery/css/lightgallery-bundle.min.css" />
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" style="height:100%">
+
+
+<!-- Document Wrapper -->
+<div id="main-wrapper" style="height:100%">
+
+
+
+
+
+<!-- Header -->
+<header id="header" class="sticky-top-slide">
+
+  <!-- Navbar -->
+  <!-- <nav class="primary-menu navbar navbar-expand text-uppercase navbar-line-under-text fw-600"> -->
+  <nav class="primary-menu navbar navbar-expand-lg text-uppercase navbar-line-under-text fw-600">
+    <div class="container position-relative">
+
+      <!-- Logo -->
+      <div class="col-auto col-lg-2 d-inline-flex ps-lg-0">
+        <a class="logo" href="/" title="Saki The Artist"> <img src="https://placekitten.com/100/100" alt="Logo" style="width:49px; height:49px; border-radius: 50%;" /> </a>
+      </div>
+
+      <!-- Nav Buttons -->
+      <div class="col col-lg-8 navbar-accordion px-0">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav"><span></span><span></span><span></span></button>
+        <div id="header-nav" class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="/#about">About</a></li>
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="/#portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="/#resume">Resume</a></li>
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="/#press">Press</a></li>
+            <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Socials -->
+      <div class="col-auto col-lg-2 d-flex justify-content-end ps-0">
+        <ul class="social-icons">
+          <li class="social-icons-facebook"><a data-bs-toggle="tooltip" href="https://facebook.com/saki.the.artist" target="_blank" title="" data-bs-original-title="Facebook"><i class="fab fa-facebook"></i></a></li>
+          <li class="social-icons-youtube"><a data-bs-toggle="tooltip" href="https://www.youtube.com/c/SakiDoingThings" target="_blank" title="" data-bs-original-title="Youtube"><i class="fab fa-youtube"></i></a></li>
+          <li class="social-icons-instagram"><a data-bs-toggle="tooltip" href="https://www.instagram.com/saki.the.artist" target="_blank" title="" data-bs-original-title="Instagram"><i class="fab fa-instagram"></i></a></li>
+          <li class="social-icons-etsy"><a data-bs-toggle="tooltip" href="https://www.etsy.com/shop/SakiMakesThings" target="_blank" title="" data-bs-original-title="Etsy"><i class="fab fa-etsy"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav><!-- Navbar End -->
+
+</header><!-- Header End -->
+
+
+
+
+
+
+
+
+
+<!-- Portfolio Gallery -->
+<section id="portfolio" class="section bg-light" style="margin:0;padding:0;display:none;height:100%">
+  <div id="portfolio-gallery" style="height:100%"></div>
+</section>
+
+
+<!-- Title and Description from database -->
+<section class="section" style="display:none;padding-top:12px" id="project-title-desc">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12 text-center text-lg-start wow fadeInUp">
+        <h2 id="project-title" class="text-10 fw-600 mb-4 text-center wow fadeInUp" style="visibility: visible;">
+          {{ spider.name }}
+        </h2>
+        <div class="text-5" id="project-desc">
+          {{ spider.desc }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Custom Content -->
+<div id="project-content">
+  {{spider.content}}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Contact Me -->
+    <section id="contact" class="section bg-primary">
+      <div class="container">
+        <div class="row">
+
+          <div class="row gy-3 mt-4">
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+              <p class="text-muted fw-500 mb-0"><i class="fab fa-facebook"></i> Facebook</p>
+              <p class="text-4 fw-600 mb-0"><a class="link-dark" href="https://facebook.com/saki.the.artist">@saki.the.artist</a></p>
+            </div>
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+              <p class="text-muted fw-500 mb-0"><i class="fab fa-instagram"></i> Instragram</p>
+              <p class="text-4 fw-600 mb-0"><a class="link-dark" href="https://www.instagram.com/saki.the.artist">@saki.the.artist</a></p>
+            </div>
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+              <p class="text-muted fw-500 mb-0"><i class="fa fa-envelope"></i> Email</p>
+              <p class="text-4 text-dark fw-600 mb-0"><a class="link-dark" href="mailto:saki.the.artist@gmail.com">saki.the.artist@gmail.com</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section><!-- Contact Me end -->
+  </div><!-- Content end -->
+</div><!-- Document Wrapper end -->
+
+
+
+
+
+
+<!-- Back to Top -->
+<a id="back-to-top" class="rounded-circle" data-bs-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fas fa-arrow-up"></i></a>
+
+
+
+<!-- JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Easing -->
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+
+<!-- Appear -->
+<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+
+<!-- WOW animation -->
+<script src="vendor/wow/wow.min.js"></script>
+
+<!-- Images Loaded -->
+<script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+<!-- Typed -->
+<script src="vendor/typed/typed.min.js"></script>
+
+<!-- Parallax Bg -->
+<script src="vendor/parallaxie/parallaxie.min.js"></script>
+
+<!-- isotope Portfolio Filter -->
+<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<script src="https://npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
+
+<!-- lightgallery -->
+<script src="vendor/lightgallery/js/lightgallery.min.js"></script>
+<script src="vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+<script src="vendor/lightgallery/js/lg-zoom.min.js"></script>
+<!-- <script src="vendor/lightgallery/js/lg-fullscreen.min.js"></script> -->
+<script src="vendor/lightgallery/js/lg-video.min.js"></script>
+
+<!-- Custom Script -->
+<script src="js/theme.js?1641898199"></script>
+
+</body>
+</html>
+
+<!-- developed by saki and farzher -->
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js" integrity="sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="spiders.js"></script>
+<script>
+  var hash = decodeURIComponent(location.hash.substr(1))
+  var spider = spiders.spiders.find(s => s.name == hash)
+
+  const vue = Vue.createApp({
+    data() {
+
+      window.spider = spider
+
+      return {
+        spiders: spiders.spiders,
+        spider: spider,
+      }
+    },
+    methods: {
+
+    },
+  }).mount('#main-wrapper')
+</script>
+
+
+<script>
+  // only display the title and desc if they both exist
+  // if(project.title && project.desc) $('#project-title-desc').css('display', 'block')
+  $('#project-title-desc').css('display', 'block')
+
+  var $gallery = document.getElementById(`portfolio-gallery`)
+
+  $('#portfolio').css('display', 'block')
+
+
+  var info = [
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+  ]
+  // // generate the array of images/videos to use in the gallery
+  // var info = []
+  // for(const image of project.images) {
+  //   info.push({
+  //     src: `${project.folder}/${image}.webp`,
+  //     thumb: `${project.folder}/${image}_thumb.webp`,
+  //   })
+  // }
+  // for(const videoid of project.videoids) {
+  //   info.push({
+  //     src: `https://www.youtube.com/watch?v=${videoid}`,
+  //   })
+  // }
+
+  let gallery = window.lightGallery($gallery, {
+    container: $gallery,
+    dynamic: true,
+    plugins: [lgZoom, /*lgFullscreen,*/ lgThumbnail, lgVideo],
+    dynamicEl: info,
+    appendSubHtmlTo: '.lg-item',
+    closable: false,
+    showMaximizeIcon: true,
+  })
+
+  gallery.openGallery()
+  // // open the gallery based on the url hash or galleryimg or images[0]
+  // var imagename = project.galleryimg
+  // if(location.hash) {
+  //   imagename = location.hash.substr(1)
+  // }
+  // let foundimageindex = project.images.indexOf(imagename)
+  // if(foundimageindex === -1) {
+  //   foundimageindex = project.videoids.indexOf(imagename)
+  //   if(foundimageindex !== -1) {
+  //     foundimageindex = project.images.length + foundimageindex
+  //   }
+  //   if(foundimageindex === -1) foundimageindex = 0
+  // }
+  // gallery.openGallery(foundimageindex)
+
+  // scroll to the gallery to fullscreen it
+  $(document.documentElement).scrollTop($('#portfolio-gallery').offset().top)
+
+  // // set the url hash when you change images
+  // $gallery.addEventListener('lgAfterSlide', (e) => {
+  //   const imageid = +e.detail.index
+  //   let imagename = project.images[imageid]
+  //   if(imagename === undefined) {
+  //     project.images.length
+  //     imagename = project.videoids[ (imageid-1) - (project.images.length-1) ]
+  //   }
+  //   location.replace(`#${imagename}`)
+  // })
+</script>
