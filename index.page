@@ -1,0 +1,143 @@
+<%- include('/header.partial') %>
+
+
+
+
+
+<!-- Content -->
+<div id="content" role="main" style="height:100%">
+
+
+
+
+
+
+<style>
+  .portfolio-img {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .portfolio-box:not(.height-auto) .portfolio-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #portfolio .container {
+    /*max-width: none;*/
+  }
+  @media (max-width: 992px) {
+    #portfolio .container {
+      padding: 0;
+    }
+  }
+</style>
+<script>
+  window.addEventListener('resize', onresize)
+  window.addEventListener('load', onresize)
+  function onresize() {
+    if(typeof $ === 'undefined') return
+
+
+    const width = $('#portfolio .container').outerWidth()
+    const ismobile = width < 960
+    const height = width / (ismobile ? 16/9 : 3.75)
+    $('.portfolio-box').not('.height-auto').css('height', height)
+    return true
+  }
+  const interval = setTimeout(() => {
+    if(onresize()) clearTimeout(interval)
+  }, 0)
+</script>
+
+
+
+<!-- Portfolio -->
+<section id="portfolio" class="section bg-light" style="margin:0;padding:0">
+  <div class="container" style="margin-top:32px; margin-bottom:32px">
+    <h2 class="text-12 fw-600 text-white text-center wow fadeInUp">Spiders</h2>
+
+    <!-- Filter Menu -->
+    <ul class="portfolio-menu nav nav-tabs fw-600 justify-content-center border-bottom-0 mb-4 wow fadeInUp">
+      <li class="nav-item"> <a data-filter=".featured" class="text-white nav-link rounded-0 active" href="">Dangerous</a></li>
+      <li class="nav-item"> <a data-filter=".gallery" href="" class="text-white nav-link rounded-0">Spooky</a></li>
+      <li class="nav-item"> <a data-filter=".video" href="" class="text-white nav-link rounded-0">Cute</a></li>
+      <!-- <li class="nav-item"> <a data-filter=".other" href="" class="text-white nav-link rounded-0">Other</a></li> -->
+    </ul>
+    <!-- Filter Menu end -->
+
+    <div class="portfolio wow fadeInUp">
+      <div class="row g-4 portfolio-filter">
+
+        <div class="grid-sizer col-lg-3 col-6"></div>
+
+        <div v-for="spider in spiders">
+
+          <div class="portfolio-item col-lg-3 col-6 featured gallery" style="padding:10px">
+            <div class="portfolio-box">
+
+              <a :href="'spider.html#'+spider.name">
+                <div class="portfolio-img">
+
+                  <!-- the actual img element -->
+                  <img class="img-fluid d-block" style="margin:0 auto; object-fit: cover;" :src="spider.thumbnailsrc" />
+
+
+                  <!-- this div is only displayed on hover -->
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-overlay-details">
+                      <!-- show the project title -->
+                      <h5 class="text-white text-5">{{spider.name}}</h5>
+
+                      <!-- show a button -->
+                      <button class="btn btn-dark" style="padding:4px 8px">
+                        <i class="fa fa-external-link-alt"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- project type icon always visible in top right -->
+                  <!-- <div class="text-white" style="position:absolute; right:10px; top:5px">
+                    <i class="fa fa-images"></i>
+                  </div> -->
+
+                    <!-- gallery dots to visually help explain it's a gallery -->
+                    <div style="position:absolute; bottom: 5%; width:100%; text-align: center;">
+                      <div style="display: inline-block; width:6px; height:6px; border-radius: 50%; background: #fff; position: relative; opacity: 1.0"></div>
+                      <div style="display: inline-block; width:6px; height:6px; border-radius: 50%; background: #fff; position: relative; opacity: 0.4"></div>
+                      <div style="display: inline-block; width:6px; height:6px; border-radius: 50%; background: #fff; position: relative; opacity: 0.4"></div>
+                    </div>
+
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- Portfolio end -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js" integrity="sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="spiders.js"></script>
+<script>
+  const vue = Vue.createApp({
+    data() {
+      return {
+        spiders: spiders.spiders,
+      }
+    },
+    methods: {
+
+    },
+  }).mount('#portfolio')
+</script>
+
+<%- include('/footer.partial') %>

@@ -1,0 +1,77 @@
+    <!-- Contact Me -->
+    <section id="contact" class="section bg-primary">
+      <div class="container">
+        <div class="row">
+
+          <div class="row gy-3 mt-4">
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+              <p class="text-muted fw-500 mb-0"><i class="fab fa-facebook"></i> Facebook</p>
+              <p class="text-4 fw-600 mb-0"><a class="link-dark" href="https://facebook.com/saki.the.artist">@saki.the.artist</a></p>
+            </div>
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+              <p class="text-muted fw-500 mb-0"><i class="fab fa-instagram"></i> Instragram</p>
+              <p class="text-4 fw-600 mb-0"><a class="link-dark" href="https://www.instagram.com/saki.the.artist">@saki.the.artist</a></p>
+            </div>
+
+            <div class="col-6 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+              <p class="text-muted fw-500 mb-0"><i class="fa fa-envelope"></i> Email</p>
+              <p class="text-4 text-dark fw-600 mb-0"><a class="link-dark" href="mailto:saki.the.artist@gmail.com">saki.the.artist@gmail.com</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section><!-- Contact Me end -->
+  </div><!-- Content end -->
+</div><!-- Document Wrapper end -->
+
+
+
+
+
+
+<!-- Back to Top -->
+<a id="back-to-top" class="rounded-circle" data-bs-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fas fa-arrow-up"></i></a>
+
+
+
+<!-- JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Easing -->
+<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+
+<!-- Appear -->
+<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+
+<!-- WOW animation -->
+<script src="vendor/wow/wow.min.js"></script>
+
+<!-- Images Loaded -->
+<script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+<!-- Typed -->
+<script src="vendor/typed/typed.min.js"></script>
+
+<!-- Parallax Bg -->
+<script src="vendor/parallaxie/parallaxie.min.js"></script>
+
+<!-- isotope Portfolio Filter -->
+<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<script src="https://npmcdn.com/isotope-packery@2/packery-mode.pkgd.js"></script>
+
+<!-- lightgallery -->
+<script src="vendor/lightgallery/js/lightgallery.min.js"></script>
+<script src="vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+<script src="vendor/lightgallery/js/lg-zoom.min.js"></script>
+<!-- <script src="vendor/lightgallery/js/lg-fullscreen.min.js"></script> -->
+<script src="vendor/lightgallery/js/lg-video.min.js"></script>
+
+<!-- Custom Script -->
+<script src="js/theme.js?1641898199"></script>
+
+</body>
+</html>

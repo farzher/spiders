@@ -1,0 +1,141 @@
+<%- include('/header.partial') %>
+
+
+
+
+
+
+<!-- Portfolio Gallery -->
+<section id="portfolio" class="section bg-light" style="margin:0;padding:0;display:none;height:100%">
+  <div id="portfolio-gallery" style="height:100%"></div>
+</section>
+
+
+<!-- Title and Description from database -->
+<section class="section" style="display:none;padding-top:12px" id="project-title-desc">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12 text-center text-lg-start wow fadeInUp">
+        <h2 id="project-title" class="text-10 fw-600 mb-4 text-center wow fadeInUp" style="visibility: visible;">
+          {{ spider.name }}
+        </h2>
+        <div class="text-5" id="project-desc">
+          {{ spider.desc }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Custom Content -->
+<div id="project-content">
+  {{spider.content}}
+</div>
+
+
+
+
+
+
+
+<%- include('/footer.partial') %>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js" integrity="sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="spiders.js"></script>
+<script>
+  var hash = decodeURIComponent(location.hash.substr(1))
+  var spider = spiders.spiders.find(s => s.name == hash)
+
+  const vue = Vue.createApp({
+    data() {
+
+      window.spider = spider
+
+      return {
+        spiders: spiders.spiders,
+        spider: spider,
+      }
+    },
+    methods: {
+
+    },
+  }).mount('#main-wrapper')
+</script>
+
+
+<script>
+  // only display the title and desc if they both exist
+  // if(project.title && project.desc) $('#project-title-desc').css('display', 'block')
+  $('#project-title-desc').css('display', 'block')
+
+  var $gallery = document.getElementById(`portfolio-gallery`)
+
+  $('#portfolio').css('display', 'block')
+
+
+  var info = [
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+    {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+  ]
+  // // generate the array of images/videos to use in the gallery
+  // var info = []
+  // for(const image of project.images) {
+  //   info.push({
+  //     src: `${project.folder}/${image}.webp`,
+  //     thumb: `${project.folder}/${image}_thumb.webp`,
+  //   })
+  // }
+  // for(const videoid of project.videoids) {
+  //   info.push({
+  //     src: `https://www.youtube.com/watch?v=${videoid}`,
+  //   })
+  // }
+
+  let gallery = window.lightGallery($gallery, {
+    container: $gallery,
+    dynamic: true,
+    plugins: [lgZoom, /*lgFullscreen,*/ lgThumbnail, lgVideo],
+    dynamicEl: info,
+    appendSubHtmlTo: '.lg-item',
+    closable: false,
+    showMaximizeIcon: true,
+  })
+
+  gallery.openGallery()
+  // // open the gallery based on the url hash or galleryimg or images[0]
+  // var imagename = project.galleryimg
+  // if(location.hash) {
+  //   imagename = location.hash.substr(1)
+  // }
+  // let foundimageindex = project.images.indexOf(imagename)
+  // if(foundimageindex === -1) {
+  //   foundimageindex = project.videoids.indexOf(imagename)
+  //   if(foundimageindex !== -1) {
+  //     foundimageindex = project.images.length + foundimageindex
+  //   }
+  //   if(foundimageindex === -1) foundimageindex = 0
+  // }
+  // gallery.openGallery(foundimageindex)
+
+  // scroll to the gallery to fullscreen it
+  $(document.documentElement).scrollTop($('#portfolio-gallery').offset().top)
+
+  // // set the url hash when you change images
+  // $gallery.addEventListener('lgAfterSlide', (e) => {
+  //   const imageid = +e.detail.index
+  //   let imagename = project.images[imageid]
+  //   if(imagename === undefined) {
+  //     project.images.length
+  //     imagename = project.videoids[ (imageid-1) - (project.images.length-1) ]
+  //   }
+  //   location.replace(`#${imagename}`)
+  // })
+</script>
