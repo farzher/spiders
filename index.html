@@ -124,6 +124,12 @@
   function onresize() {
     if(typeof $ === 'undefined') return
 
+    var $gallery = document.getElementById(`portfolio-gallery`)
+    if($gallery) {
+      document.getElementById(`portfolio-gallery`).style.height = (window.innerHeight-150)+'px'
+      // scroll to the gallery to fullscreen it
+      $(document.documentElement).scrollTop($('#portfolio-gallery').offset().top)
+    }
 
     const width = $('#portfolio .container').outerWidth()
     const ismobile = width < 960
@@ -139,7 +145,12 @@
 
 
 <!-- Portfolio -->
-<section id="portfolio" class="section bg-light" style="margin:0;padding:0">
+<div id="app">
+  <router-view></router-view>
+</div>
+
+
+<template id="portfolio-template"><div id="portfolio" class="section bg-light" style="margin:0;padding:0">
   <div class="container" style="margin-top:32px; margin-bottom:32px">
     <h2 class="text-12 fw-600 text-white text-center wow fadeInUp">Spiders</h2>
 
@@ -162,7 +173,8 @@
           <div class="portfolio-item col-lg-3 col-6 featured gallery" style="padding:10px">
             <div class="portfolio-box">
 
-              <a :href="'spider.html#'+spider.name">
+              <!-- <a :href="'spider.html#'+spider.name"> -->
+              <router-link :to="`/spider/${spider.name}`">
                 <div class="portfolio-img">
 
                   <!-- the actual img element -->
@@ -197,7 +209,9 @@
                     </div>
 
                 </div>
-              </a>
+
+              <!-- </a> -->
+              </router-link>
 
             </div>
           </div>
@@ -205,39 +219,38 @@
       </div>
     </div>
   </div>
-</section><!-- Portfolio end -->
+</div></template><!-- Portfolio end -->
+
+<template id="spider-template">
+  <!-- Portfolio Gallery -->
+  <section id="portfolio" class="section bg-light" style="margin:0;padding:0;display:none;height:100%">
+    <div id="portfolio-gallery" style="height:100%"></div>
+  </section>
 
 
+  <!-- Title and Description from database -->
+  <section class="section" style="display:none;padding-top:12px" id="project-title-desc">
+    <div class="container">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js" integrity="sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="spiders.js"></script>
-<script>
-  const vue = Vue.createApp({
-    data() {
-      return {
-        spiders: spiders.spiders,
-      }
-    },
-    methods: {
+      <div class="row">
+        <div class="col-lg-12 text-center text-lg-start wow fadeInUp">
+          <h2 id="project-title" class="text-10 fw-600 mb-4 text-center wow fadeInUp" style="visibility: visible;">
+            {{ spider.name }}
+          </h2>
+          <div class="text-5" id="project-desc">
+            {{ spider.desc }}
+          </div>
+        </div>
+      </div>
 
-    },
-  }).mount('#portfolio')
-</script>
+    </div>
+  </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- Custom Content -->
+  <div id="project-content">
+    {{spider.content}}
+  </div>
+</template>
 
 
 
@@ -321,3 +334,121 @@
 </html>
 
 <!-- developed by saki and farzher -->
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js" integrity="sha512-Pdnl+dKWHA0jEnmhogUHlOw3FqDeujiEc3XQDkvMrPUAvytiU2cZiknw2xDPgDS+u2prg2n+6eKz3CPG588gTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/vue-router@4.1.6/dist/vue-router.global.js"></script>
+<script src="spiders.js"></script>
+<script>
+  const vue = Vue.createApp({})
+
+  const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes: [
+      {
+        path: '/',
+        component: {
+          data() {return {spiders: spiders.spiders, } },
+          template: document.getElementById("portfolio-template").innerHTML,
+          mounted: () => {
+            window.init_gallery()
+            onresize()
+          },
+        },
+      },
+      {
+        path: '/spider/:name',
+        component: {
+          data() {
+            var spider = window.spider = spiders.spiders.find(s => s.name == this.$route.params.name)
+            return {
+              spiders: spiders.spiders,
+              spider: spider,
+            }
+          },
+          mounted: () => {
+            // only display the title and desc if they both exist
+            // if(project.title && project.desc) $('#project-title-desc').css('display', 'block')
+            $('#project-title-desc').css('display', 'block')
+
+            var $gallery = document.getElementById(`portfolio-gallery`)
+
+            $('#portfolio').css('display', 'block')
+
+
+            var info = [
+              {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+              {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+              {src: spider.thumbnailsrc, thumb: spider.thumbnailsrc},
+            ]
+            // // generate the array of images/videos to use in the gallery
+            // var info = []
+            // for(const image of project.images) {
+            //   info.push({
+            //     src: `${project.folder}/${image}.webp`,
+            //     thumb: `${project.folder}/${image}_thumb.webp`,
+            //   })
+            // }
+            // for(const videoid of project.videoids) {
+            //   info.push({
+            //     src: `https://www.youtube.com/watch?v=${videoid}`,
+            //   })
+            // }
+
+            let gallery = window.lightGallery($gallery, {
+              container: $gallery,
+              dynamic: true,
+              plugins: [lgZoom, /*lgFullscreen,*/ lgThumbnail, lgVideo],
+              dynamicEl: info,
+              appendSubHtmlTo: '.lg-item',
+              closable: false,
+              showMaximizeIcon: true,
+            })
+
+            gallery.openGallery()
+            // // open the gallery based on the url hash or galleryimg or images[0]
+            // var imagename = project.galleryimg
+            // if(location.hash) {
+            //   imagename = location.hash.substr(1)
+            // }
+            // let foundimageindex = project.images.indexOf(imagename)
+            // if(foundimageindex === -1) {
+            //   foundimageindex = project.videoids.indexOf(imagename)
+            //   if(foundimageindex !== -1) {
+            //     foundimageindex = project.images.length + foundimageindex
+            //   }
+            //   if(foundimageindex === -1) foundimageindex = 0
+            // }
+            // gallery.openGallery(foundimageindex)
+
+
+            // // set the url hash when you change images
+            // $gallery.addEventListener('lgAfterSlide', (e) => {
+            //   const imageid = +e.detail.index
+            //   let imagename = project.images[imageid]
+            //   if(imagename === undefined) {
+            //     project.images.length
+            //     imagename = project.videoids[ (imageid-1) - (project.images.length-1) ]
+            //   }
+            //   location.replace(`#${imagename}`)
+            // })
+            onresize()
+          },
+          template: document.getElementById("spider-template").innerHTML
+        },
+      },
+    ],
+  })
+  vue.use(router)
+
+
+  vue.mount('#app')
+</script>

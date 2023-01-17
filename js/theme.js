@@ -58,7 +58,11 @@ $(window).on('scroll',function() {
 /*------------------------------------
     Isotope Portfolio Filter
 -------------------------------------- */
-$(window).on('load', function() {
+// $(window).on('load', function() {
+// 	init_gallery()
+// })
+window.init_gallery = init_gallery
+function init_gallery() {
 	var $grid = $(".portfolio-filter").isotope({
 		// layoutMode: 'masonry',
 		layoutMode: 'packery',
@@ -82,7 +86,7 @@ $(window).on('load', function() {
 		})
 		return false
 	})
-})
+}
 
 
 
